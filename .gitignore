@@ -63,3 +63,6 @@ out/
 
 # Test coverage reports
 coverage/
+
+# Firebase Service Account
+src/main/resources/*.json
