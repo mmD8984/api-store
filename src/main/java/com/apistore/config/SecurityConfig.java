@@ -21,6 +21,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())    // Tắt CSRF vì dùng API
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/images/upload").permitAll()
                         .anyRequest().authenticated()
                 );
 

@@ -12,3 +12,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+cloudinary:
+  cloud_name: dpuascmen
+  api_key: 652888563957622
+  api_secret: XwZcuNCZnnoNovKuIKbg0ux50Vo
