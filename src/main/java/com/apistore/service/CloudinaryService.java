@@ -18,8 +18,20 @@ public class CloudinaryService {
     }
 
     public Map upload(MultipartFile file) throws IOException {
+        String originalFilename = file.getOriginalFilename();
+        if (originalFilename == null) {
+            originalFilename = "image";
+        }
+        String fileNameWithoutExt = originalFilename.replaceFirst("[.][^.]+$", "");
+
+
         return cloudinary.uploader().upload(file.getBytes(),
-                ObjectUtils.asMap("resource_type", "auto"));
+                ObjectUtils.asMap(
+                        "public_id", fileNameWithoutExt,
+                        "resource_type", "auto",
+                        "unique_filename", false,
+                        "overwrite", true
+                ));
     }
 
     public Map delete(String publicId) throws IOException {
