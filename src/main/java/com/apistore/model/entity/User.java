@@ -27,7 +27,7 @@ public class User {
     @Column(name = "firebase_uid", length = 128, nullable = false, unique = true)
     private String firebaseUid;
 
-    @Column(length = 255)
+    @Column(length = 255, unique = true)
     private String email;
 
     @Column(name = "is_email_verified")
@@ -41,17 +41,4 @@ public class User {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-
-    // Tự động set timestamp khi insert/update
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
